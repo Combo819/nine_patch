@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>九宫格</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            position: relative;
+        }
+
+        .box .poster {
+            width: 300px;
+            height: 350px;
+            border: 1px solid #000;
+            /* position: absolute; */
+        }
+
+        .box .poster span {
+            display: block;
+        }
+
+        .box .poster span:last-child {
+            color: red;
+            font-family: '微软雅黑';
+        }
+
+        .btn {
+            height: 100px;
+            width: 100px;
+            border: 1px solid #000;
+            margin: 0 auto;
+        }
+
+        .btn button {
+            display: block;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="btn">
+        <button>三列</button>
+        <button>四列</button>
+        <button>五列</button>
+    </div>
+    <div class="box">
+        <div class="poster">
+            <image src="images/01.jpg" />
+            <span>大冒险家1</span>
+            <span>刘德华吴倩莲关之琳</span>
+        </div>
+        <div class="poster">
+            <image src="images/02.jpg" />
+            <span>大冒险家2</span>
+            <span>刘德华吴倩莲关之琳</span>
+        </div>
+        <div class="poster">
+            <image src="images/03.jpg" />
+            <span>大冒险家3</span>
+            <span>刘德华吴倩莲关之琳</span>
+        </div>
+        <div class="poster">
+            <image src="images/04.jpg" />
+            <span>大冒险家4</span>
+            <span>刘德华吴倩莲关之琳</span>
+        </div>
+        <div class="poster">
+            <image src="images/05.jpg" />
+            <span>大冒险家5</span>
+            <span>刘德华吴倩莲关之琳</span>
+        </div>
+        <div class="poster">
+            <image src="images/06.jpg" />
+            <span>大冒险家6</span>
+            <span>刘德华吴倩莲关之琳</span>
+        </div>
+        <div class="poster">
+            <image src="images/07.jpg" />
+            <span>大冒险家7</span>
+            <span>刘德华吴倩莲关之琳</span>
+        </div>
+        <div class="poster">
+            <image src="images/08.jpg" />
+            <span>大冒险家8</span>
+            <span>刘德华吴倩莲关之琳</span>
+        </div>
+        <!-- <div class="poster">
+            <image src="images/09.jpg" />
+            <span>大冒险家9</span>
+            <span>刘德华吴倩莲关之琳</span>
+        </div> -->
+        <div class="poster">
+            <image src="images/10.jpg" />
+            <span>大冒险家10</span>
+            <span>刘德华吴倩莲关之琳</span>
+        </div>
+        <div class="poster">
+            <image src="images/11.jpg" />
+            <span>大冒险家11</span>
+            <span>刘德华吴倩莲关之琳</span>
+        </div>
+        <div class="poster">
+            <image src="images/12.jpg" />
+            <span>大冒险家12</span>
+            <span>刘德华吴倩莲关之琳</span>
+        </div>
+        <div class="poster">
+            <image src="images/13.jpg" />
+            <span>大冒险家13</span>
+            <span>刘德华吴倩莲关之琳</span>
+        </div>
+        <div class="poster">
+            <image src="images/14.jpg" />
+            <span>大冒险家14</span>
+            <span>刘德华吴倩莲关之琳</span>
+        </div>
+        <div class="poster">
+            <image src="images/15.jpg" />
+            <span>大冒险家15</span>
+            <span>刘德华吴倩莲关之琳</span>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            alert('加载完毕！');
+
+            Sorting(350,380);
+
+
+            //Bw为每个海报横向占有的空间，Bh为纵向
+            function Sorting(Bw, Bh) {
+
+                //取得变量
+                var btn = document.getElementsByTagName('button');
+                var poster = document.getElementsByClassName('poster');
+
+                for (var i = 0; i < btn.length; i++) {
+                    //同步异步问题
+                    var bt = btn[i];
+                    bt.index = i;
+
+
+                    bt.onclick = function () {
+
+                        //是需要几列
+                        var allcols = this.index + 3;
+
+                        //j为第几个海报
+                        for (var j = 0; j < poster.length; j++) {
+                            var col = j % allcols;//j对列数取余就是该海报在该行的第几列
+                            var row = parseInt(j / allcols);//j对列数取商再取整就是该海报在第几行
+                            poster[j].style.position = 'absolute';
+                            poster[j].style.left = 350 * col + 'px';
+                            poster[j].style.top = 380 * row + 'px';
+                        }
+                    }
+                }
+            }
+            
+        }
+    </script>
+</body>
+
+</html>
